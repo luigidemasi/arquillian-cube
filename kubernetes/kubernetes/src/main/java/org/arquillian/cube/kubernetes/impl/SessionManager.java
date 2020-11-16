@@ -1,18 +1,18 @@
 package org.arquillian.cube.kubernetes.impl;
 
-import io.fabric8.kubernetes.api.model.v4_0.Endpoints;
-import io.fabric8.kubernetes.api.model.v4_0.HasMetadata;
-import io.fabric8.kubernetes.api.model.v4_0.Pod;
-import io.fabric8.kubernetes.api.model.v4_0.PodList;
-import io.fabric8.kubernetes.api.model.v4_0.ReplicationController;
-import io.fabric8.kubernetes.api.model.v4_0.ReplicationControllerList;
-import io.fabric8.kubernetes.api.model.v4_0.Service;
-import io.fabric8.kubernetes.api.model.v4_0.ServiceList;
-import io.fabric8.kubernetes.api.model.v4_0.ServicePort;
-import io.fabric8.kubernetes.api.model.v4_0.apps.ReplicaSet;
-import io.fabric8.kubernetes.api.model.v4_0.apps.ReplicaSetList;
-import io.fabric8.kubernetes.clnt.v4_0.KubernetesClient;
-import io.fabric8.kubernetes.clnt.v4_0.KubernetesClientTimeoutException;
+import io.fabric8.kubernetes.api.model.v4_6.Endpoints;
+import io.fabric8.kubernetes.api.model.v4_6.HasMetadata;
+import io.fabric8.kubernetes.api.model.v4_6.Pod;
+import io.fabric8.kubernetes.api.model.v4_6.PodList;
+import io.fabric8.kubernetes.api.model.v4_6.ReplicationController;
+import io.fabric8.kubernetes.api.model.v4_6.ReplicationControllerList;
+import io.fabric8.kubernetes.api.model.v4_6.Service;
+import io.fabric8.kubernetes.api.model.v4_6.ServiceList;
+import io.fabric8.kubernetes.api.model.v4_6.ServicePort;
+import io.fabric8.kubernetes.api.model.v4_6.apps.ReplicaSet;
+import io.fabric8.kubernetes.api.model.v4_6.apps.ReplicaSetList;
+import io.fabric8.kubernetes.clnt.v4_6.KubernetesClient;
+import io.fabric8.kubernetes.clnt.v4_6.KubernetesClientTimeoutException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
@@ -268,7 +268,7 @@ public class SessionManager implements SessionCreatedListener {
 
     @Override
     public void display() {
-        ReplicaSetList replicaSetList = client.extensions().replicaSets().inNamespace(session.getNamespace()).list();
+        ReplicaSetList replicaSetList = client.apps().replicaSets().inNamespace(session.getNamespace()).list();
         if (replicaSetList.getItems() != null) {
             for (ReplicaSet replicaSet : replicaSetList.getItems()) {
                 session.getLogger().info("ReplicaSet: [" + replicaSet.getMetadata().getName() + "]");

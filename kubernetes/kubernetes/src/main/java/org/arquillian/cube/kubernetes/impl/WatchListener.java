@@ -1,13 +1,13 @@
 package org.arquillian.cube.kubernetes.impl;
 
-import io.fabric8.kubernetes.api.model.v4_0.Container;
-import io.fabric8.kubernetes.api.model.v4_0.Event;
-import io.fabric8.kubernetes.api.model.v4_0.Pod;
-import io.fabric8.kubernetes.clnt.v4_0.KubernetesClient;
-import io.fabric8.kubernetes.clnt.v4_0.KubernetesClientException;
-import io.fabric8.kubernetes.clnt.v4_0.Watch;
-import io.fabric8.kubernetes.clnt.v4_0.Watcher;
-import io.fabric8.kubernetes.clnt.v4_0.dsl.LogWatch;
+import io.fabric8.kubernetes.api.model.v4_6.Container;
+import io.fabric8.kubernetes.api.model.v4_6.Event;
+import io.fabric8.kubernetes.api.model.v4_6.Pod;
+import io.fabric8.kubernetes.clnt.v4_6.KubernetesClient;
+import io.fabric8.kubernetes.clnt.v4_6.KubernetesClientException;
+import io.fabric8.kubernetes.clnt.v4_6.Watch;
+import io.fabric8.kubernetes.clnt.v4_6.Watcher;
+import io.fabric8.kubernetes.clnt.v4_6.dsl.LogWatch;
 import java.io.Closeable;
 import java.io.File;
 import java.io.FileNotFoundException;
