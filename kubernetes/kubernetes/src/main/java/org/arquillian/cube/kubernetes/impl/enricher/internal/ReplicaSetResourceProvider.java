@@ -8,8 +8,8 @@ import java.lang.annotation.Annotation;
 import java.util.List;
 import java.util.Map;
 
-import io.fabric8.kubernetes.api.model.v4_0.apps.ReplicaSet;
-import io.fabric8.kubernetes.api.model.v4_0.apps.ReplicaSetList;
+import io.fabric8.kubernetes.api.model.v4_6.apps.ReplicaSet;
+import io.fabric8.kubernetes.api.model.v4_6.apps.ReplicaSetList;
 
 /**
  * A {@link ResourceProvider} for {@link ReplicaSet}.
@@ -35,7 +35,7 @@ public class ReplicaSetResourceProvider extends AbstractKubernetesResourceProvid
 
         // Gets the first replica set found that matches the labels.
         Map<String, String> labels = getLabels(qualifiers);
-        ReplicaSetList list = getClient().extensions().replicaSets().inNamespace(namespace).withLabels(labels).list();
+        ReplicaSetList list = getClient().apps().replicaSets().inNamespace(namespace).withLabels(labels).list();
         List<ReplicaSet> replicaSets = list.getItems();
         if( !replicaSets.isEmpty() ) {
             return replicaSets.get(0);

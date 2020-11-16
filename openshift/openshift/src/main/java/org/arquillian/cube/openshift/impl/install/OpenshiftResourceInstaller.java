@@ -1,11 +1,11 @@
 package org.arquillian.cube.openshift.impl.install;
 
-import io.fabric8.kubernetes.api.builder.v4_0.Visitor;
-import io.fabric8.kubernetes.api.model.v4_0.HasMetadata;
-import io.fabric8.kubernetes.api.model.v4_0.KubernetesList;
-import io.fabric8.kubernetes.clnt.v4_0.KubernetesClient;
-import io.fabric8.kubernetes.clnt.v4_0.KubernetesClientException;
-import io.fabric8.openshift.clnt.v4_0.OpenShiftClient;
+import io.fabric8.kubernetes.api.builder.v4_6.Visitor;
+import io.fabric8.kubernetes.api.model.v4_6.HasMetadata;
+import io.fabric8.kubernetes.api.model.v4_6.KubernetesList;
+import io.fabric8.kubernetes.clnt.v4_6.KubernetesClient;
+import io.fabric8.kubernetes.clnt.v4_6.KubernetesClientException;
+import io.fabric8.openshift.clnt.v4_6.OpenShiftClient;
 import org.arquillian.cube.impl.util.Strings;
 import org.arquillian.cube.impl.util.SystemEnvironmentVariables;
 import org.arquillian.cube.kubernetes.api.Configuration;
