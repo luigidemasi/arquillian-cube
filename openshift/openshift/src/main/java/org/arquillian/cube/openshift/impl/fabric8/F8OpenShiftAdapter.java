@@ -23,55 +23,55 @@
 
 package org.arquillian.cube.openshift.impl.fabric8;
 
-import io.fabric8.kubernetes.api.model.v4_0.Container;
-import io.fabric8.kubernetes.api.model.v4_0.ContainerPort;
-import io.fabric8.kubernetes.api.model.v4_0.DoneablePod;
-import io.fabric8.kubernetes.api.model.v4_0.EnvVar;
-import io.fabric8.kubernetes.api.model.v4_0.ExecAction;
-import io.fabric8.kubernetes.api.model.v4_0.HTTPGetAction;
-import io.fabric8.kubernetes.api.model.v4_0.Handler;
-import io.fabric8.kubernetes.api.model.v4_0.HasMetadata;
-import io.fabric8.kubernetes.api.model.v4_0.IntOrString;
-import io.fabric8.kubernetes.api.model.v4_0.KubernetesList;
-import io.fabric8.kubernetes.api.model.v4_0.Lifecycle;
-import io.fabric8.kubernetes.api.model.v4_0.ObjectMeta;
-import io.fabric8.kubernetes.api.model.v4_0.PersistentVolumeClaim;
-import io.fabric8.kubernetes.api.model.v4_0.Pod;
-import io.fabric8.kubernetes.api.model.v4_0.PodList;
-import io.fabric8.kubernetes.api.model.v4_0.PodSpec;
-import io.fabric8.kubernetes.api.model.v4_0.PodTemplateSpec;
-import io.fabric8.kubernetes.api.model.v4_0.Probe;
-import io.fabric8.kubernetes.api.model.v4_0.ReplicationController;
-import io.fabric8.kubernetes.api.model.v4_0.ReplicationControllerList;
-import io.fabric8.kubernetes.api.model.v4_0.ReplicationControllerSpec;
-import io.fabric8.kubernetes.api.model.v4_0.SecretVolumeSource;
-import io.fabric8.kubernetes.api.model.v4_0.Service;
-import io.fabric8.kubernetes.api.model.v4_0.ServiceAccount;
-import io.fabric8.kubernetes.api.model.v4_0.ServicePort;
-import io.fabric8.kubernetes.api.model.v4_0.Volume;
-import io.fabric8.kubernetes.api.model.v4_0.VolumeMount;
-import io.fabric8.kubernetes.clnt.v4_0.dsl.Deletable;
-import io.fabric8.kubernetes.clnt.v4_0.dsl.ExecListener;
-import io.fabric8.kubernetes.clnt.v4_0.dsl.NonNamespaceOperation;
-import io.fabric8.kubernetes.clnt.v4_0.dsl.PodResource;
-import io.fabric8.openshift.api.model.v4_0.Build;
-import io.fabric8.openshift.api.model.v4_0.BuildList;
-import io.fabric8.openshift.api.model.v4_0.DeploymentConfig;
-import io.fabric8.openshift.api.model.v4_0.DeploymentConfigList;
-import io.fabric8.openshift.api.model.v4_0.DeploymentConfigStatus;
-import io.fabric8.openshift.api.model.v4_0.DoneableDeploymentConfig;
-import io.fabric8.openshift.api.model.v4_0.DoneableTemplate;
-import io.fabric8.openshift.api.model.v4_0.Project;
-import io.fabric8.openshift.api.model.v4_0.RoleBinding;
-import io.fabric8.openshift.api.model.v4_0.RoleBindingBuilder;
-import io.fabric8.openshift.api.model.v4_0.Template;
-import io.fabric8.openshift.clnt.v4_0.DefaultOpenShiftClient;
-import io.fabric8.openshift.clnt.v4_0.NamespacedOpenShiftClient;
-import io.fabric8.openshift.clnt.v4_0.OpenShiftConfig;
-import io.fabric8.openshift.clnt.v4_0.OpenShiftConfigBuilder;
-import io.fabric8.openshift.clnt.v4_0.ParameterValue;
-import io.fabric8.openshift.clnt.v4_0.dsl.DeployableScalableResource;
-import io.fabric8.openshift.clnt.v4_0.dsl.TemplateResource;
+import io.fabric8.kubernetes.api.model.v4_6.Container;
+import io.fabric8.kubernetes.api.model.v4_6.ContainerPort;
+import io.fabric8.kubernetes.api.model.v4_6.DoneablePod;
+import io.fabric8.kubernetes.api.model.v4_6.EnvVar;
+import io.fabric8.kubernetes.api.model.v4_6.ExecAction;
+import io.fabric8.kubernetes.api.model.v4_6.HTTPGetAction;
+import io.fabric8.kubernetes.api.model.v4_6.Handler;
+import io.fabric8.kubernetes.api.model.v4_6.HasMetadata;
+import io.fabric8.kubernetes.api.model.v4_6.IntOrString;
+import io.fabric8.kubernetes.api.model.v4_6.KubernetesList;
+import io.fabric8.kubernetes.api.model.v4_6.Lifecycle;
+import io.fabric8.kubernetes.api.model.v4_6.ObjectMeta;
+import io.fabric8.kubernetes.api.model.v4_6.PersistentVolumeClaim;
+import io.fabric8.kubernetes.api.model.v4_6.Pod;
+import io.fabric8.kubernetes.api.model.v4_6.PodList;
+import io.fabric8.kubernetes.api.model.v4_6.PodSpec;
+import io.fabric8.kubernetes.api.model.v4_6.PodTemplateSpec;
+import io.fabric8.kubernetes.api.model.v4_6.Probe;
+import io.fabric8.kubernetes.api.model.v4_6.ReplicationController;
+import io.fabric8.kubernetes.api.model.v4_6.ReplicationControllerList;
+import io.fabric8.kubernetes.api.model.v4_6.ReplicationControllerSpec;
+import io.fabric8.kubernetes.api.model.v4_6.SecretVolumeSource;
+import io.fabric8.kubernetes.api.model.v4_6.Service;
+import io.fabric8.kubernetes.api.model.v4_6.ServiceAccount;
+import io.fabric8.kubernetes.api.model.v4_6.ServicePort;
+import io.fabric8.kubernetes.api.model.v4_6.Volume;
+import io.fabric8.kubernetes.api.model.v4_6.VolumeMount;
+import io.fabric8.kubernetes.clnt.v4_6.dsl.Deletable;
+import io.fabric8.kubernetes.clnt.v4_6.dsl.ExecListener;
+import io.fabric8.kubernetes.clnt.v4_6.dsl.NonNamespaceOperation;
+import io.fabric8.kubernetes.clnt.v4_6.dsl.PodResource;
+import io.fabric8.openshift.api.model.v4_6.Build;
+import io.fabric8.openshift.api.model.v4_6.BuildList;
+import io.fabric8.openshift.api.model.v4_6.DeploymentConfig;
+import io.fabric8.openshift.api.model.v4_6.DeploymentConfigList;
+import io.fabric8.openshift.api.model.v4_6.DeploymentConfigStatus;
+import io.fabric8.openshift.api.model.v4_6.DoneableDeploymentConfig;
+import io.fabric8.openshift.api.model.v4_6.DoneableTemplate;
+import io.fabric8.openshift.api.model.v4_6.OpenshiftRoleBinding;
+import io.fabric8.openshift.api.model.v4_6.OpenshiftRoleBindingBuilder;
+import io.fabric8.openshift.api.model.v4_6.Project;
+import io.fabric8.openshift.api.model.v4_6.Template;
+import io.fabric8.openshift.clnt.v4_6.DefaultOpenShiftClient;
+import io.fabric8.openshift.clnt.v4_6.NamespacedOpenShiftClient;
+import io.fabric8.openshift.clnt.v4_6.OpenShiftConfig;
+import io.fabric8.openshift.clnt.v4_6.OpenShiftConfigBuilder;
+import io.fabric8.openshift.clnt.v4_6.ParameterValue;
+import io.fabric8.openshift.clnt.v4_6.dsl.DeployableScalableResource;
+import io.fabric8.openshift.clnt.v4_6.dsl.TemplateResource;
 import okhttp3.Response;
 import org.arquillian.cube.openshift.api.MountSecret;
 import org.arquillian.cube.openshift.api.model.OpenShiftResource;
@@ -442,11 +442,11 @@ public class F8OpenShiftAdapter extends AbstractOpenShiftAdapter {
 
     protected OpenShiftResourceHandle createRoleBinding(String roleRefName, String userName) {
         String subjectName = userName.substring(userName.lastIndexOf(":") + 1);
-        final RoleBinding roleBinding = client
+        final OpenshiftRoleBinding roleBinding = client
             .roleBindings()
             .inNamespace(configuration.getNamespace())
             .create(
-                new RoleBindingBuilder()
+                new OpenshiftRoleBindingBuilder()
                     .withNewMetadata()
                     .withName(roleRefName + "-" + subjectName)
                     .endMetadata()
