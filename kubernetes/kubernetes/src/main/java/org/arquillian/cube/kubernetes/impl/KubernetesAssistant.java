@@ -1,18 +1,18 @@
 package org.arquillian.cube.kubernetes.impl;
 
-import io.fabric8.kubernetes.api.model.v4_0.EndpointSubset;
-import io.fabric8.kubernetes.api.model.v4_0.Endpoints;
-import io.fabric8.kubernetes.api.model.v4_0.HasMetadata;
-import io.fabric8.kubernetes.api.model.v4_0.Pod;
-import io.fabric8.kubernetes.api.model.v4_0.ReplicationController;
-import io.fabric8.kubernetes.api.model.v4_0.Service;
-import io.fabric8.kubernetes.api.model.v4_0.ServicePort;
-import io.fabric8.kubernetes.api.model.v4_0.apps.Deployment;
-import io.fabric8.kubernetes.clnt.v4_0.ConfigBuilder;
-import io.fabric8.kubernetes.clnt.v4_0.KubernetesClient;
-import io.fabric8.kubernetes.clnt.v4_0.KubernetesClientException;
-import io.fabric8.kubernetes.clnt.v4_0.dsl.NamespaceListVisitFromServerGetDeleteRecreateWaitApplicable;
-import io.fabric8.kubernetes.clnt.v4_0.internal.readiness.Readiness;
+import io.fabric8.kubernetes.api.model.v4_6.EndpointSubset;
+import io.fabric8.kubernetes.api.model.v4_6.Endpoints;
+import io.fabric8.kubernetes.api.model.v4_6.HasMetadata;
+import io.fabric8.kubernetes.api.model.v4_6.Pod;
+import io.fabric8.kubernetes.api.model.v4_6.ReplicationController;
+import io.fabric8.kubernetes.api.model.v4_6.Service;
+import io.fabric8.kubernetes.api.model.v4_6.ServicePort;
+import io.fabric8.kubernetes.api.model.v4_6.apps.Deployment;
+import io.fabric8.kubernetes.clnt.v4_6.ConfigBuilder;
+import io.fabric8.kubernetes.clnt.v4_6.KubernetesClient;
+import io.fabric8.kubernetes.clnt.v4_6.KubernetesClientException;
+import io.fabric8.kubernetes.clnt.v4_6.dsl.NamespaceListVisitFromServerGetDeleteRecreateWaitApplicable;
+import io.fabric8.kubernetes.clnt.v4_6.internal.readiness.Readiness;
 import io.github.lukehutch.fastclasspathscanner.FastClasspathScanner;
 import io.github.lukehutch.fastclasspathscanner.matchprocessor.FileMatchProcessor;
 import org.arquillian.cube.kubernetes.impl.portforward.PortForwarder;
@@ -315,7 +315,7 @@ public class KubernetesAssistant {
 
     private int portForward(String podName, int sourcePort, int targetPort, String namespace) {
         try {
-            final io.fabric8.kubernetes.clnt.v4_0.Config build = new ConfigBuilder(client.getConfiguration()).withNamespace(namespace).build();
+            final io.fabric8.kubernetes.clnt.v4_6.Config build = new ConfigBuilder(client.getConfiguration()).withNamespace(namespace).build();
             final PortForwarder portForwarder = new PortForwarder(build, podName);
             portForwarder.forwardPort(sourcePort, targetPort);
             return sourcePort;
