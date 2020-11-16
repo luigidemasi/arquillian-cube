@@ -8,8 +8,8 @@ import java.lang.annotation.Annotation;
 import java.util.List;
 import java.util.Map;
 
-import io.fabric8.kubernetes.api.model.v4_0.apps.Deployment;
-import io.fabric8.kubernetes.api.model.v4_0.apps.DeploymentList;
+import io.fabric8.kubernetes.api.model.v4_6.apps.Deployment;
+import io.fabric8.kubernetes.api.model.v4_6.apps.DeploymentList;
 
 /**
  * A {@link ResourceProvider} for {@link Deployment}.
@@ -35,7 +35,7 @@ public class DeploymentResourceProvider extends AbstractKubernetesResourceProvid
 
         // Gets the first deployment that matches the labels.
         Map<String, String> labels = getLabels(qualifiers);
-        DeploymentList list = getClient().extensions().deployments().inNamespace(namespace).withLabels(labels).list();
+        DeploymentList list = getClient().apps().deployments().inNamespace(namespace).withLabels(labels).list();
         List<Deployment> deployments = list.getItems();
         if( !deployments.isEmpty() ) {
             return deployments.get(0);
