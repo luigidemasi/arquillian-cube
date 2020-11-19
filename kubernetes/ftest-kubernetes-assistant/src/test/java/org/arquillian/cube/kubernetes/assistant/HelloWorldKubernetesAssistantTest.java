@@ -7,6 +7,7 @@ import org.arquillian.cube.kubernetes.impl.KubernetesAssistant;
 import org.arquillian.cube.kubernetes.impl.requirement.RequiresKubernetes;
 import org.arquillian.cube.requirement.ArquillianConditionalRunner;
 import org.jboss.arquillian.test.api.ArquillianResource;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -19,6 +20,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 // tag::k8_assistant_example[]
 @RunWith(ArquillianConditionalRunner.class)
 @RequiresKubernetes
+@Ignore("Doesn't work if the node's firewall doesn't allow incoming connection to tcp port 8080")
 public class HelloWorldKubernetesAssistantTest {
 
     @ArquillianResource

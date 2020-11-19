@@ -11,6 +11,7 @@ import org.arquillian.cube.openshift.impl.enricher.AwaitRoute;
 import org.arquillian.cube.openshift.impl.enricher.RouteURL;
 import org.arquillian.cube.openshift.impl.requirement.RequiresOpenshift;
 import org.arquillian.cube.requirement.ArquillianConditionalRunner;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
 import org.junit.runner.RunWith;
@@ -35,8 +36,8 @@ public class HelloWorldTemplateIT {
     }
 
     @Test
-    @Template(url = "https://gist.githubusercontent.com/dipak-pawar/403b870fc92f6569f64f12b506318606/raw/4dd7cd4b259f893353509411ba4777792cacd034/hello_openshift_route_template.yaml",
-        parameters = @TemplateParameter(name = "ROUTE_NAME", value = "hello-openshift-method-route"))
+    @Template(url = "https://gist.githubusercontent.com/luigidemasi/fada1398fc585a4db681c79e756dd907/raw/a7c263a5ab2cd2559944eaecf1fcba4809ec8b38/hello_openshift_route_template.yaml",
+            parameters = @TemplateParameter(name = "ROUTE_NAME", value = "hello-openshift-method-route"))
     public void should_create_method_template_resources(
         @RouteURL("hello-openshift-method-route") @AwaitRoute URL routeUrl)
         throws IOException {

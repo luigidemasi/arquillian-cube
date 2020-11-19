@@ -94,7 +94,7 @@ public class HelloWorldServletIT {
         @ArquillianResource CubeID cubeID) throws IOException {
         File newFolder = folder.newFolder();
         cubeController.copyFileDirectoryFromContainer(cubeID, "/usr/local/tomcat/logs", newFolder.getAbsolutePath());
-        File logFolder = newFolder.listFiles()[0];
+        File logFolder = newFolder;
         assertThat(logFolder, notNullValue());
         assertThat(logFolder.listFiles().length > 0, is(true));
     }
