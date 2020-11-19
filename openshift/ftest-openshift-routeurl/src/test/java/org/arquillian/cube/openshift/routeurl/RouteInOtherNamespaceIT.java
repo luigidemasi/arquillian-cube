@@ -16,7 +16,7 @@ import org.junit.runner.RunWith;
 @RunWith(ArquillianConditionalRunner.class)
 public class RouteInOtherNamespaceIT {
 
-    @RouteURL(value = "docker-registry", namespace = "default")
+    @RouteURL(value = "image-registry", namespace = "openshift-image-registry")
     private URL routeURL;
 
     @Test
@@ -26,7 +26,7 @@ public class RouteInOtherNamespaceIT {
 
     @Test
     public void injectedIntoMethodShouldNotBeNull(
-        @RouteURL(value = "docker-registry", namespace = "default") URL routeURL) {
+        @RouteURL(value = "image-registry", namespace = "openshift-image-registry") URL routeURL) {
         assertThat(routeURL).isNotNull();
     }
 

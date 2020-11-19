@@ -2,7 +2,10 @@ package org.arquillian.cube.openshift.ftest;
 
 import java.net.URISyntaxException;
 import java.net.URL;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
+
 import org.arquillian.cube.kubernetes.impl.utils.CommandExecutor;
 import org.arquillian.cube.openshift.impl.requirement.RequiresOpenshift;
 import org.arquillian.cube.requirement.ArquillianConditionalRunner;
@@ -10,6 +13,8 @@ import org.junit.AfterClass;
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
 import org.junit.runner.RunWith;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -18,6 +23,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 @RequiresOpenshift
 @RunWith(ArquillianConditionalRunner.class)
 public class HelloWorldIT {
+
+    private static final Logger LOG = LoggerFactory.getLogger(HelloWorldIT.class);
 
     private static CommandExecutor commandExecutor = new CommandExecutor();
 
@@ -41,8 +48,11 @@ public class HelloWorldIT {
         // when
         final List<String> resources = commandExecutor.execCommand(commandToExecute);
 
+        String output = resources.stream().collect(Collectors.joining("\n"));
+
+        LOG.info("LDM - {}", output);
         // then
-        assertThat(resources).contains("service \"hello-world\" created", "deployment \"hello-world\" created");
+        assertThat(resources).contains("service/hello-world created", "deployment.apps/hello-world created");
     }
 
     @AfterClass
@@ -50,7 +60,7 @@ public class HelloWorldIT {
         String commandToExecute = "oc delete -f " + getResource("openshift.json");
         final List<String> strings = commandExecutor.execCommand(commandToExecute);
 
-        assertThat(strings).contains("service \"hello-world\" deleted", "deployment \"hello-world\" deleted");
+        assertThat(strings).contains("service \"hello-world\" deleted", "deployment.apps \"hello-world\" deleted");
     }
 
     private static String getResource(String resourceName) {

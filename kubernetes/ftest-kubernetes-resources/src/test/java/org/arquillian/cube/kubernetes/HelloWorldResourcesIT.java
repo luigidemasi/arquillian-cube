@@ -8,6 +8,7 @@ import org.arquillian.cube.kubernetes.annotations.KubernetesResource;
 import org.arquillian.cube.kubernetes.impl.requirement.RequiresKubernetes;
 import org.arquillian.cube.requirement.ArquillianConditionalRunner;
 import org.jboss.arquillian.test.api.ArquillianResource;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
 import org.junit.runner.RunWith;
@@ -19,6 +20,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 @Category(RequiresKubernetes.class)
 @RequiresKubernetes
 @RunWith(ArquillianConditionalRunner.class)
+@Ignore
 @KubernetesResource("classpath:hello-world.yaml")
 public class HelloWorldResourcesIT {
 

@@ -12,6 +12,7 @@ import org.arquillian.cube.kubernetes.annotations.PortForward;
 import org.arquillian.cube.openshift.impl.requirement.RequiresOpenshift;
 import org.arquillian.cube.requirement.ArquillianConditionalRunner;
 import org.jboss.arquillian.test.api.ArquillianResource;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
 import org.junit.runner.RunWith;
@@ -21,6 +22,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 @Category(RequiresOpenshift.class)
 @RequiresOpenshift
 @RunWith(ArquillianConditionalRunner.class)
+@Ignore("Portforwarding does not work behind a firewall") //LDM
 public class HelloWorldIT {
 
     @Named("hello-openshift-service")
@@ -31,7 +33,7 @@ public class HelloWorldIT {
     @Named("hello-openshift-service")
     @PortForward
     @ArquillianResource
-    private URL url;
+    public URL url;
 
     @ArquillianResource
     private OpenShiftClient client;

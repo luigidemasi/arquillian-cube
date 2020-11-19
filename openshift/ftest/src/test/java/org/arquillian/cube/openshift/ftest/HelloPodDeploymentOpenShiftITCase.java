@@ -9,6 +9,7 @@ import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.asset.EmptyAsset;
 import org.jboss.shrinkwrap.api.spec.WebArchive;
 import org.junit.Assert;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
 import org.junit.runner.RunWith;
@@ -16,6 +17,7 @@ import org.junit.runner.RunWith;
 @Category(RequiresOpenshift.class)
 @RequiresOpenshift
 @RunWith(ArquillianConditionalRunner.class)
+@Ignore("problem with image aslakknutsen/openshift-arquillian-gitserver") //LDM
 public class HelloPodDeploymentOpenShiftITCase {
 
     @ArquillianResource
